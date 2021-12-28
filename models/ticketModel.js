@@ -22,6 +22,7 @@ const ticketSchema = new mongoose.Schema({
 	status: {
 		type: String,
 		default: 'to-do',
+    required: [true, "Ticket must have a status!"],
 		validate: [validateStatus, 'Please add a valid status'],
 	},
 	dateCreated: {
