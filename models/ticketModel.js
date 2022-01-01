@@ -6,6 +6,12 @@ const validateStatus = function (status) {
 		: false;
 };
 
+const validatePriority = function (status) {
+	return status === 'high' || status === 'medium' || status === 'low'
+		? true
+		: false;
+};
+
 const ticketSchema = new mongoose.Schema({
 	title: {
 		type: String,
@@ -22,19 +28,21 @@ const ticketSchema = new mongoose.Schema({
 	status: {
 		type: String,
 		default: 'to-do',
-    required: [true, "Ticket must have a status!"],
+		required: [true, 'Ticket must have a status!'],
 		validate: [validateStatus, 'Please add a valid status'],
 	},
 	dateCreated: {
 		type: String,
 		required: [true, 'Ticket must have date!'],
 	},
-  dateLastUpdated: {
-    type: String,
-    required: [true, "Ticket must have a last updated date!"],
-  },
+	dateLastUpdated: {
+		type: String,
+		// required: [true, 'Ticket must have a last updated date!'],
+	},
 	priority: {
 		type: String,
+		required: [true, 'Ticket must have a priority!'],
+		validate: [validatePriority, 'Please add a valid priority!'],
 	},
 	uniqueId: {
 		type: String,
