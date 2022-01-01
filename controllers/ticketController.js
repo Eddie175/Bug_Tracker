@@ -72,6 +72,7 @@ exports.createTicket = async (req, res, next) => {
 };
 
 exports.updateTicket = async (req, res, next) => {
+  const date = new Date().toLocaleString('en-US');
 	try {
 		const ticket = await Ticket.findByIdAndUpdate(req.params.id, req.body, {
 			new: true,
