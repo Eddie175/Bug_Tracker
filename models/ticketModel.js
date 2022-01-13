@@ -37,7 +37,7 @@ const ticketSchema = new mongoose.Schema({
 	},
 	dateLastUpdated: {
 		type: String,
-		// required: [true, 'Ticket must have a last updated date!'],
+		required: [true, 'Ticket must have a last updated date!'],
 	},
 	priority: {
 		type: String,
