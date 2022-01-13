@@ -53,6 +53,7 @@ exports.createTicket = async (req, res, next) => {
 			assignee,
 			status,
 			dateCreated: date,
+			dateLastUpdated: date,
 			priority,
 			uniqueId: `${randomLetter.toUpperCase()}${randomNumber}`,
 			id,
