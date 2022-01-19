@@ -15,11 +15,6 @@ const {
 	REDIS_URL,
 } = require('./config/config');
 
-let redisClient = redis.createClient({
-	host: REDIS_URL,
-	port: REDIS_PORT,
-});
-
 const userRouter = require('./routes/userRoutes');
 const ticketRouter = require('./routes/ticketRoutes');
 
@@ -46,7 +41,6 @@ app.enable('trust proxy');
 app.use(cors({}));
 app.use(
 	session({
-		store: new RedisStore({ client: redisClient }),
 		secret: SESSION_SECRET,
 		cookie: {
 			secure: false,
