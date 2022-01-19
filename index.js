@@ -17,11 +17,9 @@ const ticketRouter = require('./routes/ticketRoutes');
 
 const app = express();
 
-if (ENVIRONMENT === 'development') {
-	const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
-} else {
-	const mongoURL = process.env.DB_URL;
-}
+const mongoURL = (ENVIRONMENT === 'development')
+	? `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
+	: process.env.DB_URL;
 
 const connectWithRetry = () => {
 	mongoose
