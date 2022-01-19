@@ -1,9 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const redis = require('redis');
 const cors = require('cors');
-let RedisStore = require('connect-redis')(session);
 
 const {
 	MONGO_USER,
@@ -11,8 +9,7 @@ const {
 	MONGO_IP,
 	MONGO_PORT,
 	SESSION_SECRET,
-	REDIS_PORT,
-	REDIS_URL,
+	ENVIRONMENT,
 } = require('./config/config');
 
 const userRouter = require('./routes/userRoutes');
@@ -20,7 +17,11 @@ const ticketRouter = require('./routes/ticketRoutes');
 
 const app = express();
 
-const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
+if (ENVIRONMENT === 'development') {
+	const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
+} else {
+	const mongoURL = process.env.DB_URL;
+}
 
 const connectWithRetry = () => {
 	mongoose
