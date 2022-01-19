@@ -4,5 +4,6 @@ module.exports = {
 	MONGO_USER: process.env.MONGO_USER,
 	MONGO_PASSWORD: process.env.MONGO_PASSWORD,
 	SESSION_SECRET: process.env.SESSION_SECRET,
-	ENVIRONMENT: process.env.ENVIRONMENT || 'development'
+	ENVIRONMENT: process.env.ENVIRONMENT || 'development',
+	API_URL: process.env.API_URL || '/api/v1'
 };
