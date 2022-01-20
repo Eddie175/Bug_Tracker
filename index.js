@@ -1,3 +1,5 @@
+import App from './frontend/src/App';
+
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -17,9 +19,10 @@ const ticketRouter = require('./routes/ticketRoutes');
 
 const app = express();
 
-const mongoURL = (ENVIRONMENT === 'development')
-	? `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
-	: process.env.DB_URL;
+const mongoURL =
+	ENVIRONMENT === 'development'
+		? `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
+		: process.env.DB_URL;
 
 const connectWithRetry = () => {
 	mongoose
@@ -54,7 +57,14 @@ app.use(
 app.use(express.json());
 
 app.get('/', (req, res) => {
-	res.send('<h2>Hi There</h2><p>This is where my frontend app will go HELLO</p>');
+	res.send(
+		ReactDOM.render(
+			<React.StrictMode>
+				<App />
+			</React.StrictMode>,
+			document.getElementById('root')
+		)
+	);
 	console.log('yeah it ran');
 });
 
