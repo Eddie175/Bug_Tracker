@@ -54,7 +54,7 @@ app.use(
 app.use(express.json());
 
 app.get('/', (req, res) => {
-	res.send('<h2>Hi There</h2><p>This is where my frontend app will go</p>');
+	res.send('<h2>Hi There</h2><p>This is where my frontend app will go HELLO</p>');
 	console.log('yeah it ran');
 });
 
