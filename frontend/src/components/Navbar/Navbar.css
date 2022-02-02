@@ -2,17 +2,18 @@
 	background-color: lightgray;
 	height: 80px;
 	display: flex;
-  justify-content: space-around;
+	justify-content: flex-end;
 	align-items: center;
 }
 
 .navbar-logo {
 	color: rgb(0, 0, 0);
 	justify-self: start;
-	margin-left: 20px;
+	margin-right: auto;
 	cursor: pointer;
+	margin-left: 30px;
 }
 
 .dropdown {
-  margin: 20px; 
+	margin: 20px;
 }
