@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
 import './Navbar.css';
-import Dropdown from '../Dropdown';
-import Button from '../Button'
+import Dropdown from './Dropdown';
+import Button from './Button'
 
 function Navbar() {
 	const [selected, setSelected] = useState('Who is this?');
